@@ -98,6 +98,6 @@ public class Plan implements Comparable<Plan> {
 
     @Override
     public String toString(){
-        return nombre + " " + id + "\n" + "cuotas: \n" +  verFechasCoutas();
+        return nombre + " | id: " + id + "\n" + "fechas de cuotas: \n" +  verFechasCoutas();
     }
 }
