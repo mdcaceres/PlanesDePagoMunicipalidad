@@ -5,6 +5,7 @@ import Entidades.Plan;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     static Municipalidad municipalidad;
@@ -24,12 +25,20 @@ public class Main {
         menu.put(5, Main::promedioIntereses);
         menu.put(6, Main::salir);
 
+        //menu.put(7,Main::mostrarFechasCuotas);
+        //menu.put(2,Main::agregarPago);
+        //menu.put(3, Main::sumatoriaDeuda);
+        //menu.put(4, Main::listarPagosContribuyente);
+        //menu.put(5, Main::promedioIntereses);
+        //menu.put(6, Main::salir);
+
         botones.put(1,"Crear Plan");
         botones.put(2,"Agregar Pago");
         botones.put(3,"Ver total de la deuda");
         botones.put(4,"Listar los pagos por cliente");
         botones.put(5,"Ver promedio de intereses");
         botones.put(6,"salir");
+        botones.put(7,"ver fechas de cuotas");
 
         while(!salir){
             System.out.println(botones.toString().replace(",","\n"));
@@ -73,12 +82,19 @@ public class Main {
 
     }
 
+    public static void mostrarFechasCuotas(UUID id){
+        System.out.println("" + municipalidad.verCoutasPlan(id));
+    }
+
     public static void agregarPlan(){
         System.out.println("creado: " + municipalidad.agregarPlan());
     }
 
     public static void agregarPago(){
-        System.out.println("Agregar pago: " + municipalidad.agregarPago());
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Ingrese id del plan");
+        UUID id = UUID.fromString(scan.next());
+        System.out.println("Agregar pago: " + municipalidad.agregarPago(id));
     }
 
     public static void sumatoriaDeuda(){

@@ -26,19 +26,14 @@ public class Municipalidad {
         return p.toString();
     }
 
-    public boolean agregarPago(){
+    public boolean agregarPago(UUID id){
         try{
-            scan = new Scanner(System.in);
-            System.out.println("Ingrese id del plan");
-            UUID id = UUID.fromString(scan.next());
             System.out.println("Ingrese la cuota a pagar");
             int cuota = scan.nextInt();
             System.out.println("ingrese el monto del pago");
             float monto = scan.nextFloat();
-            //como hacer un orElse
+            //como hacer un orElse convertir PLanes en Optional??
             return planes.get(id).agregarPago(new Pago(cuota,monto));
-        }catch(IllegalArgumentException ex) {
-            System.out.println("Escriba un UUID Correcto");
         }catch(NullPointerException ex){
             System.out.println("No se encontro ninguna cuenta relacionada con el id ingresado");
         }
@@ -76,6 +71,10 @@ public class Municipalidad {
                         .map(Plan::sumaInteresesCobrados)
                         .mapToDouble(x->x)
                         .sum()/ (long) planes.size());
+    }
+
+    public String verCoutasPlan(UUID id){
+        return planes.get(id).verFechasCoutas();
     }
 
 

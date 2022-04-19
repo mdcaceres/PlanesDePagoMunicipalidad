@@ -1,10 +1,13 @@
 package Entidades;
 
+import java.time.LocalDate;
+
 public class Pago implements Comparable<Pago> {
     private int numeroCuota;
     private int demora;
     private float importe;
     private float intereseAdicionales;
+    private LocalDate fecha;
 
     public Pago(int numeroCuota, float importe) {
         this.numeroCuota = numeroCuota;
@@ -43,9 +46,17 @@ public class Pago implements Comparable<Pago> {
         this.numeroCuota = numeroCuota;
     }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString(){
-        return "demora: " + demora + ";Importe: " + importe + ";Intereses Acumulados: " + intereseAdicionales;
+        return "demora: " + demora + " | Importe: " + importe + " | Intereses Acumulados: " + intereseAdicionales + " | fecha " + fecha;
     }
 
     @Override
